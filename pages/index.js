@@ -28,6 +28,28 @@ const [user, setUser] = useState([{
 }
 ])
 
+const dataPass=(data)=>{
+  console.log("Data", data)
+  const any = []
+  const template = {
+    id:"",
+    name: data.name,
+    image:"/eraLogo.png",
+    post:data.post
+  }
+  any.push(template)
+  setUser([...user, template])
+}
+
+console.log(user)
+
+
+
+
+
+
+
+
   return (
     <Landing>
     <Fragment>
@@ -39,7 +61,7 @@ const [user, setUser] = useState([{
             ))
           }
         </div>
-        <AccForm/>
+        <AccForm dataPass={dataPass} />
 
       </div>
 
