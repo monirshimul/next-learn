@@ -29,10 +29,9 @@ const [user, setUser] = useState([{
 ])
 
 const dataPass=(data)=>{
-  console.log("Data", data)
   const any = []
   const template = {
-    id:"",
+    id: user[user.length - 1]["id"] + 1,
     name: data.name,
     image:"/eraLogo.png",
     post:data.post
