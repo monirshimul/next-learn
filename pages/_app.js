@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>eVision</title>
+        <title>Learn React</title>
 
 
 
