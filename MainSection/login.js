@@ -10,15 +10,30 @@ const Login = () => {
     const router = useRouter();
     const [user, setUser] = useState({
         username: "",
-        password: ""
+        password: "",
+        role:""
 
     });
 
-    const { username, password } = user;
+    const { username, password, role } = user;
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
+
+    const roleChange = (e) =>{
+        console.log(e.target.value)
+        setUser({ ...user, role : e.target.value})
+    }
+
+    const goNext = ()=>{
+        console.log("the role",role)
+        sessionStorage.setItem("role",role)
+        role === "admin" ? router.push("/adminHome") : router.push("/userHome")
+        
+    }
+
+    //console.log(user)
     return (
         <>
             <div className="container-fluid" style={{ margin: "0", padding: "0" }}>
@@ -40,7 +55,7 @@ const Login = () => {
                                             height="250"
                                             alt="Picture"
                                         />
-                                        
+
                                     </div>
                                 </div>
 
@@ -81,8 +96,21 @@ const Login = () => {
                                             className="mt-4"
                                         />
 
+                                        <div className="text-center shadow-sm mt-3 p-3">
+                                            <div className="form-check form-check-inline">
+                                                <input className="form-check-input" onChange={roleChange} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="admin" />
+                                                <label className="form-check-label" htmlFor="inlineRadio1">Admin</label>
+                                            </div>
+                                            <div className="form-check form-check-inline">
+                                                <input className="form-check-input" onChange={roleChange} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="user" />
+                                                <label className="form-check-label" htmlFor="inlineRadio2">User</label>
+                                            </div>
+                                        </div>
+
+
+
                                         <div className="d-flex justify-content-center">
-                                            <Button className={`${style.loginCardBgDark} mt-4`} type="submit" variant="contained" style={{ color: "#fff", outline: "none" }}>
+                                            <Button onClick={goNext} className={`${style.loginCardBgDark} mt-4`} variant="contained" style={{ color: "#fff", outline: "none" }}>
                                                 Login
                                             </Button>
                                         </div>
